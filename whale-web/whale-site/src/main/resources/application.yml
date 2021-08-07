@@ -1,0 +1,8 @@
+server:
+  port: ${BACKEND_PORT:8080}
+spring:
+  profiles:
+    group:
+      site:
+        - "default"
+        - "cache"

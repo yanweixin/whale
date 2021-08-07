@@ -1,0 +1,33 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        hbm2ddl:
+          auto: update
+        globally_quoted_identifiers: true
+        implicit_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        event:
+          merge:
+            entity_copy_observer: allow
+
+datasources:
+  backend:
+    url: jdbc:postgresql://${POSTGRES_DB_HOST}:${POSTGRES_DB_PORT}/${POSTGRES_DB_SCHEMA}
+    driver-class-name: org.postgresql.Driver
+    username: ${POSTGRES_DATASOURCE_USERNAME}
+    password: ${POSTGRES_DATASOURCE_PASSWORD}
+    configuration:
+      maximum-pool-size: 30
+  app-master:
+    jdbc-url: jdbc:mysql://${MYSQL_DB_MASTER_HOST}:${MYSQL_DB_MASTER_PORT}/${MYSQL_DEFAULT_SCHEMA}?useSSL=true&requireSSL=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${MYSQL_DB_USERNAME}
+    password: ${MYSQL_DB_PASSWORD}
+    maximum-pool-size: 30
+  app-replica:
+    jdbc-url: jdbc:mysql://${MYSQL_DB_REPLICA_HOST}:${MYSQL_DB_REPLICA_PORT}/${MYSQL_DEFAULT_SCHEMA}?useSSL=true&requireSSL=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${MYSQL_DB_USERNAME}
+    password: ${MYSQL_DB_PASSWORD}
