@@ -1,6 +1,5 @@
 plugins {
     id("me.whale.kotlin-application-conventions")
-    id("com.google.protobuf")
 }
 
 val grpcVersion by extra("1.39.0")

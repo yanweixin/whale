@@ -1,12 +1,10 @@
 plugins {
     // Apply the common convention plugin for shared build configuration between library and application projects.
-    id("me.whale.kotlin-common-conventions")
+    id("me.whale.kotlin-application-conventions")
     id("org.springframework.boot")
     id("io.spring.dependency-management")
     kotlin("plugin.spring")
     kotlin("plugin.jpa")
-    // Apply the application plugin to add support for building a CLI application in Java.
-    application
 }
 
 dependencies {

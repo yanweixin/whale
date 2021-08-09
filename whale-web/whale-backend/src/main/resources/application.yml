@@ -1,6 +1,19 @@
 server:
-  port: ${APP_PORT:8080}
+  port: ${BACKEND_PORT:8080}
 
 spring:
   profiles:
     include: cache
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+    jmx:
+      exposure:
+        exclude: "*"
+  endpoint:
+    shutdown:
+      enabled: true

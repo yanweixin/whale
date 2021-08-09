@@ -1,8 +1,18 @@
 server:
-  port: ${BACKEND_PORT:8080}
+  port: ${APP_PORT:8080}
 spring:
   profiles:
     group:
       site:
         - "default"
         - "cache"
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "info,health"
+  endpoint:
+    shutdown:
+      enabled: true

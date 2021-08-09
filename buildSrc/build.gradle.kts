@@ -18,6 +18,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-allopen")
     implementation("org.springframework.boot:spring-boot-gradle-plugin:2.5.3")
 //    implementation(platform("org.springframework.boot:spring-boot-dependencies:2.5.2"))
-    implementation("me.champeau.jmh:jmh-gradle-plugin:0.6.4")
-    implementation("com.google.protobuf:protobuf-gradle-plugin:0.8.16")
+    implementation("me.champeau.jmh:jmh-gradle-plugin:0.6.5")
+    implementation("com.google.protobuf:protobuf-gradle-plugin:0.8.17")
 }

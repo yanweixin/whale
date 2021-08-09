@@ -1,6 +1,6 @@
 plugins {
     id("me.whale.kotlin-spring-conventions")
-//    id("me.whale.kotlin-library-conventions")
+    id("me.whale.kotlin-library-conventions")
 }
 
 val redissonVersion by extra("3.16.0")
