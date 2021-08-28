@@ -19,17 +19,19 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 java.targetCompatibility = JavaVersion.VERSION_11
 
-val junitVersion by extra("5.7.2")
-val jmhVersion by extra("1.32")
+val junitVersion: String by rootProject.extra
+val jmhVersion: String by rootProject.extra
+val springVersion: String by rootProject.extra
 
 dependencies {
     constraints {
         // Define dependency versions as constraints
-        implementation("org.apache.commons:commons-text:1.9")
+        implementation("org.apache.commons:commons-text:${rootProject.extra["commonTextVersion"]}")
         implementation("org.apache.commons:commons-math:3.6.1")
-        implementation("org.apache.commons:commons-lang3:3.12.0")
+        implementation("org.apache.commons:commons-lang3:${rootProject.extra["commonsLangVersion"]}")
         implementation("commons-io:commons-io:2.10.0")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+        implementation("com.fasterxml.jackson.core:jackson-databind:${rootProject.extra["jacksonVersion"]}")
     }
 
     // Align versions of all Kotlin components
@@ -38,7 +40,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
 
-    implementation("org.springframework.boot:spring-boot-starter-log4j2:2.5.4")
+    implementation("org.springframework.boot:spring-boot-starter-log4j2:${springVersion}")
 
     // Use JUnit Jupiter API for testing.
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")

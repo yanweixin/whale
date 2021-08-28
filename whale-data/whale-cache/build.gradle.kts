@@ -2,8 +2,8 @@ plugins {
     id("me.whale.kotlin-library-conventions")
 }
 
-val redissonVersion by extra("3.16.1")
-val caffeineVersion by extra("3.0.3")
+val redissonVersion: String by rootProject.extra
+val caffeineVersion: String by rootProject.extra
 
 dependencies {
     implementation("me.whale:pure-utils:0.0.2-SNAPSHOT")

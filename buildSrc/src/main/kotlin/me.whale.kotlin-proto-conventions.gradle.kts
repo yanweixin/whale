@@ -5,8 +5,8 @@ plugins {
     id("com.google.protobuf")
 }
 
-val grpcVersion by extra("1.39.0")
-val protocVersion by extra("3.17.2")
+val grpcVersion: String by rootProject.extra
+val protocVersion: String by rootProject.extra
 
 dependencies {
     implementation("io.grpc:grpc-protobuf:${grpcVersion}")

@@ -4,8 +4,7 @@ plugins {
     id("me.whale.kotlin-rpc-conventions")
 }
 
-val vertxVersion by extra("4.1.2")
-val junitJupiterVersion by extra("5.7.0")
+val vertxVersion: String by rootProject.extra
 
 val mainVerticleName = "me.whale.hrm.MainVerticle"
 val launcherClassName = "io.vertx.core.Launcher"
