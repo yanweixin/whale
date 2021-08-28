@@ -1,23 +1,34 @@
 package me.whale.data.cache;
 
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Service;
+import me.whale.utils.lang.ClassUtil;
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
+import org.redisson.config.Config;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import javax.annotation.Resource;
-import java.util.concurrent.TimeUnit;
+import java.io.IOException;
 
-@Service
-public class RedisOps<K, V> {
-    @Resource
-    private RedisTemplate<K, V> redisTemplate;
+public final class RedisOps {
+    private static final Logger LOGGER = LoggerFactory.getLogger(RedisOps.class);
+    private static final RedisOps INSTANCE = new RedisOps();
+    private final RedissonClient redisson;
 
-    public void set(K key, V value) {
-        redisTemplate.opsForValue().set(key, value);
+    private RedisOps() {
+        LOGGER.info("start create redisson client");
+        try {
+            Config config = Config.fromYAML(ClassUtil.getResourceAsStream("redis-cluster.yml"));
+            redisson = Redisson.create(config);
+        } catch (IOException e) {
+            LOGGER.error("create redisson client error ", e);
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            LOGGER.info("redisson client creation end");
+        }
     }
 
-    public void set(K key, V value, long timeout, TimeUnit unit) {
-        redisTemplate.opsForValue().set(key, value, timeout, unit);
+    public static RedisOps getInstance() {
+        return INSTANCE;
     }
-
 
 }

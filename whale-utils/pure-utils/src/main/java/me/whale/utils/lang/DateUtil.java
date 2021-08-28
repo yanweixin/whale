@@ -1,5 +1,7 @@
 package me.whale.utils.lang;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -56,6 +58,14 @@ public final class DateUtil {
         long minute = TimeUnit.MILLISECONDS.toMinutes(duration) - (TimeUnit.MILLISECONDS.toHours(duration) * 60);
         long second = TimeUnit.MILLISECONDS.toSeconds(duration) - (TimeUnit.MILLISECONDS.toMinutes(duration) * 60);
         return String.format("%d hours, %d minutes , %d seconds", hours, minute, second);
+    }
+
+    public static String formatDate(Date date) {
+        if (date == null) {
+            return null;
+        }
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(date);
     }
 }
 

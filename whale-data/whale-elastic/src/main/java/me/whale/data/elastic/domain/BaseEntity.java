@@ -1,34 +1,21 @@
 package me.whale.data.elastic.domain;
 
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.annotation.Version;
-
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public abstract class BaseEntity implements Serializable {
     private static final long serialVersionUID = -6356193698399207192L;
 
-    @Id
     private String id;
 
-    @CreatedBy
     private String createdBy;
 
-    @CreatedDate
-    private LocalDateTime createdAt;
+    private Date createdAt;
 
-    @LastModifiedBy
     private String updatedBy;
 
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
+    private Date updatedAt;
 
-    @Version
     private Long objectVersionNumber;
 
     public String getId() {
@@ -47,11 +34,11 @@ public abstract class BaseEntity implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -63,11 +50,11 @@ public abstract class BaseEntity implements Serializable {
         this.updatedBy = updatedBy;
     }
 
-    public LocalDateTime getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 

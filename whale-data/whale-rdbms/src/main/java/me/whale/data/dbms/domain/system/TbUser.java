@@ -1,12 +1,10 @@
 package me.whale.data.dbms.domain.system;
 
-import me.whale.data.api.validator.ValidEmail;
-import me.whale.data.api.validator.ValidPhone;
 import me.whale.data.dbms.domain.BaseEntity;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class TbUser extends BaseEntity {
@@ -16,11 +14,7 @@ public class TbUser extends BaseEntity {
     @NotBlank
     private String userName;
     private String gender;
-    private LocalDate birthday;
-    @ValidPhone
-    private String phone;
-    @ValidEmail
-    private String email;
+    private Date birthday;
     @NotBlank
     private String password;
 
@@ -48,28 +42,12 @@ public class TbUser extends BaseEntity {
         this.gender = gender;
     }
 
-    public LocalDate getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPassword() {

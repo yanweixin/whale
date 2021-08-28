@@ -3,10 +3,14 @@ package me.whale.components.rpc;
 import io.grpc.BindableService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import me.whale.utils.lang.ClassUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class GrpcServer {
@@ -21,11 +25,35 @@ public class GrpcServer {
         this.port = server.getPort();
     }
 
+    public GrpcServer(int port) {
+        this(port, null, true);
+    }
+
     public GrpcServer(int port, BindableService service) {
         this.port = port;
         this.server = ServerBuilder.forPort(port)
                 .addService(service)
                 .build();
+    }
+
+    public GrpcServer(int port, List<BindableService> services) {
+        this(port, services, false);
+    }
+
+    public GrpcServer(int port, List<BindableService> services, boolean autoDiscover) {
+        this.port = port;
+        ServerBuilder<?> serverBuilder = ServerBuilder.forPort(port);
+        if (services != null && !services.isEmpty()) {
+            for (BindableService service : services) {
+                serverBuilder.addService(service);
+            }
+        }
+        if (autoDiscover) {
+            for (BindableService service : findGrpcService()) {
+                serverBuilder.addService(service);
+            }
+        }
+        this.server = serverBuilder.build();
     }
 
     protected void start() throws IOException {
@@ -59,5 +87,23 @@ public class GrpcServer {
         if (server != null) {
             server.awaitTermination();
         }
+    }
+
+    private List<BindableService> findGrpcService() {
+        List<BindableService> bindableServices = new ArrayList<>();
+        try {
+            String packageName = getClass().getPackageName();
+            Class<?>[] classes = ClassUtil.getPackageClasses(packageName);
+            for (Class<?> clazz : classes) {
+                if (BindableService.class.isAssignableFrom(clazz)) {
+                    LOGGER.info("find service class:" + clazz.getName());
+                    Constructor<BindableService> constructor = (Constructor<BindableService>) clazz.getConstructor();
+                    bindableServices.add(constructor.newInstance());
+                }
+            }
+        } catch (Exception e) {
+            LOGGER.info("find gRPC service failed");
+        }
+        return bindableServices;
     }
 }

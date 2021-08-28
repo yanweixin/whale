@@ -12,7 +12,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 import java.util.stream.Stream;
 
@@ -29,7 +29,7 @@ public abstract class BaseEntity extends IdEntity {
     @NotNull
     @Column(updatable = false)
     @CreatedDate
-    private LocalDateTime createdAt;
+    private Date createdAt;
 
     @NotNull
     @LastModifiedBy
@@ -37,7 +37,7 @@ public abstract class BaseEntity extends IdEntity {
 
     @NotNull
     @LastModifiedDate
-    private LocalDateTime updatedAt;
+    private Date updatedAt;
 
     @NotNull
     @Version
@@ -48,8 +48,8 @@ public abstract class BaseEntity extends IdEntity {
         if (Stream.of(createdBy, createdAt, updatedBy, updatedAt).anyMatch(Objects::isNull)) {
             this.createdBy = "-1";
             this.updatedBy = "-1";
-            this.createdAt = LocalDateTime.now();
-            this.updatedAt = LocalDateTime.now();
+            this.createdAt = new Date();
+            this.updatedAt = new Date();
             this.objectVersionNumber = 1L;
         }
     }
@@ -62,11 +62,11 @@ public abstract class BaseEntity extends IdEntity {
         this.createdBy = createdBy;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -78,11 +78,11 @@ public abstract class BaseEntity extends IdEntity {
         this.updatedBy = updatedBy;
     }
 
-    public LocalDateTime getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 

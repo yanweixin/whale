@@ -1,9 +1,11 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     kotlin("jvm")
     id("me.champeau.jmh")
+    id("com.github.johnrengelman.shadow")
 }
 
 repositories {
@@ -16,6 +18,9 @@ group = "me.whale"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 java.targetCompatibility = JavaVersion.VERSION_11
+
+val junitVersion by extra("5.7.2")
+val jmhVersion by extra("1.32")
 
 dependencies {
     constraints {
@@ -30,27 +35,27 @@ dependencies {
     // Align versions of all Kotlin components
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     // Use the Kotlin JDK 8 standard library.
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation(kotlin("stdlib-jdk8"))
+    implementation(kotlin("reflect"))
 
-    implementation("org.springframework.boot:spring-boot-starter-log4j2:2.5.2")
+    implementation("org.springframework.boot:spring-boot-starter-log4j2:2.5.4")
 
     // Use JUnit Jupiter API for testing.
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
     testImplementation(kotlin("test"))
     testImplementation("org.assertj:assertj-core:3.20.2")
     // Use JUnit Jupiter Engine for testing.
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
-    jmh("org.openjdk.jmh:jmh-core:1.32")
-    jmh("org.openjdk.jmh:jmh-generator-annprocess:1.32")
-    jmh("org.openjdk.jmh:jmh-generator-reflection:1.32")
+    jmh("org.openjdk.jmh:jmh-core:${jmhVersion}")
+    jmh("org.openjdk.jmh:jmh-generator-annprocess:${jmhVersion}")
+    jmh("org.openjdk.jmh:jmh-generator-reflection:${jmhVersion}")
 }
 
-//jmh {
-//    duplicateClassesStrategy = DuplicatesStrategy.EXCLUDE
-//}
+jmh {
+    duplicateClassesStrategy.set(DuplicatesStrategy.EXCLUDE)
+}
 
 tasks.test {
     // Use junit platform for unit tests.
@@ -58,6 +63,7 @@ tasks.test {
     testLogging {
         showStandardStreams = true
         exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+//        events = setOf(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
     }
 }
 
@@ -92,4 +98,8 @@ tasks.withType<JavaExec> {
 
 tasks.processResources {
     from("$rootDir/config/resources")
+}
+
+tasks.shadowJar {
+    enabled = false
 }
