@@ -1,8 +1,7 @@
 plugins {
     id("me.whale.kotlin-rpc-conventions")
-    id("me.whale.kotlin-spring-conventions")
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    implementation("org.mongodb:mongodb-driver-sync:4.3.1")
 }

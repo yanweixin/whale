@@ -36,6 +36,6 @@ class PoiUtilTest {
         A a = new A();
         a.b = "a";
         a.d = "c";
-        PoiUtil.createExcel(Paths.get("end.xlsx"), "第一页", List.of(a));
+        PoiUtil.createExcel(Paths.get("build/end.xlsx"), "第一页", List.of(a));
     }
 }

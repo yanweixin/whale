@@ -1,7 +1,7 @@
 package me.whale.data.dbms.domain.system;
 
-import me.whale.common.enums.IdentityType;
 import me.whale.common.enums.general.ValidStatus;
+import me.whale.common.enums.personal.IdentityType;
 import me.whale.data.dbms.domain.BaseEntity;
 
 import javax.persistence.Entity;

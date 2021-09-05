@@ -1,7 +1,7 @@
 plugins {
-    id("me.whale.kotlin-spring-conventions")
+    id("me.whale.kotlin-rpc-conventions")
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-data-neo4j")
+    implementation("org.neo4j.driver:neo4j-java-driver:4.3.4")
 }

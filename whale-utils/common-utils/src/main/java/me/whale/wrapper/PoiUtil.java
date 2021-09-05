@@ -18,7 +18,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.nio.file.Path;
@@ -42,14 +41,22 @@ public final class PoiUtil {
             return false;
         }
         try (OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(path.toFile()))) {
-            Workbook workbook = WorkbookFactory.create(path.endsWith("xlsx"));
-            writeData(workbook, sheetName, dataList);
-            workbook.write(outputStream);
+            writeData(outputStream, path.endsWith("xlsx"), sheetName, dataList);
             return true;
         } catch (Exception e) {
             LOGGER.warn("create excel file error", e);
         }
         return false;
+    }
+
+    public static <T> void writeData(OutputStream outputStream, boolean isXlsx, String sheetName, List<T> dataList) {
+        try {
+            Workbook workbook = WorkbookFactory.create(isXlsx);
+            writeData(workbook, sheetName, dataList);
+            workbook.write(outputStream);
+        } catch (Exception e) {
+            LOGGER.warn("create excel file error", e);
+        }
     }
 
     public static <T> void writeData(Workbook workbook, String sheetName, List<T> dataList) throws IllegalAccessException {

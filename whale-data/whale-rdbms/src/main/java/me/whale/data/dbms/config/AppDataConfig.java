@@ -40,7 +40,7 @@ public class AppDataConfig {
                                                                           JpaProperties jpaProperties) {
         EntityManagerFactoryBuilder builder = createEntityManagerFactoryBuilder(jpaProperties);
         return builder.dataSource(appMasterDataSource)
-                .packages("me.whale.data.dbms.domain.ugc")
+                .packages("me.whale.data.dbms.domain.ugc", "me.whale.data.dbms.domain.questionaire")
                 .persistenceUnit("appDs")
                 .build();
     }

@@ -4,16 +4,18 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.regex.Pattern;
 
 class BaseTest {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Test
     void test() {
-        BigDecimal b = new BigDecimal("2133");
-        logger.info(b.setScale(2, RoundingMode.HALF_UP).toPlainString());
+        logger.info("start log:" + new String(Base64.getEncoder().encode("123".getBytes(StandardCharsets.UTF_8))));
+        logger.info("end log:" + new String(Base64.getDecoder().decode("MTIz")));
+//        logger.info(String.valueOf(Pattern.compile("^-?\\d+(\\.\\d+)?$").matcher("***").matches()));
     }
 }

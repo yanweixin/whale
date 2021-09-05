@@ -15,11 +15,3 @@ dependencies {
     }
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }
-
-tasks.bootJar {
-    enabled = false
-}
-
-tasks.bootRun {
-    enabled = false
-}

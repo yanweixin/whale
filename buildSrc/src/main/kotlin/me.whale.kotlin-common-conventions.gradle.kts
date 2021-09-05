@@ -77,7 +77,7 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<Test> {
-    File("./config/.env").forEachLine {
+    File("$rootDir/config/.env").forEachLine {
         if (it.isNotBlank() && !it.startsWith("#")) {
             val (key, value) = it.split("=")
             if (System.getenv(key) == null) {
@@ -88,7 +88,7 @@ tasks.withType<Test> {
 }
 
 tasks.withType<JavaExec> {
-    File("./config/.env").forEachLine {
+    rootProject.file("config/.env").forEachLine {
         if (it.isNotBlank() && !it.startsWith("#")) {
             val (key, value) = it.split("=")
             if (System.getenv(key) == null) {

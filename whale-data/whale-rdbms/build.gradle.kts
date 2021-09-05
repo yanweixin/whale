@@ -10,3 +10,7 @@ dependencies {
     runtimeOnly("org.postgresql:postgresql")
     runtimeOnly("mysql:mysql-connector-java")
 }
+
+springBoot {
+    mainClass.set("me.whale.data.dbms.RdbmsApplication")
+}

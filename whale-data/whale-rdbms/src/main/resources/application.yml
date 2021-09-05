@@ -11,6 +11,11 @@ spring:
         event:
           merge:
             entity_copy_observer: allow
+  main:
+    web-application-type: none
+  devtools:
+    livereload:
+      enabled: false
 
 datasources:
   backend:
