@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class PostRepositoryTest {
+class AppRepositoryTest {
     @Resource
     private PostRepository postRepository;
 

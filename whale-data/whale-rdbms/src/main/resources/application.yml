@@ -8,6 +8,10 @@ spring:
         globally_quoted_identifiers: true
         implicit_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
         physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        session:
+          events:
+            log:
+              LOG_QUERIES_SLOWER_THAN_MS: 1
         event:
           merge:
             entity_copy_observer: allow

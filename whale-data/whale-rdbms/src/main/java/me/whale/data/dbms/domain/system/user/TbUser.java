@@ -1,4 +1,4 @@
-package me.whale.data.dbms.domain.system;
+package me.whale.data.dbms.domain.system.user;
 
 import me.whale.data.dbms.domain.BaseEntity;
 

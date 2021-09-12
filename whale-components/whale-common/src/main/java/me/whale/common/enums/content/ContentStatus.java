@@ -1,4 +1,4 @@
-package me.whale.common.enums;
+package me.whale.common.enums.content;
 
 public enum ContentStatus {
     /**

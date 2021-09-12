@@ -1,4 +1,4 @@
-package me.whale.data.dbms.domain.system;
+package me.whale.data.dbms.domain.system.user;
 
 import me.whale.common.enums.general.ValidStatus;
 import me.whale.common.enums.personal.IdentityType;
@@ -14,6 +14,7 @@ public class UserIdentityInfo extends BaseEntity {
     private Long userId;
     @Enumerated(EnumType.STRING)
     private IdentityType identityType;
+    private String identity;
     private ValidStatus validStatus;
     private boolean useLogin;
 
@@ -31,6 +32,14 @@ public class UserIdentityInfo extends BaseEntity {
 
     public void setIdentityType(IdentityType identityType) {
         this.identityType = identityType;
+    }
+
+    public String getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity(String identity) {
+        this.identity = identity;
     }
 
     public ValidStatus getValidStatus() {
