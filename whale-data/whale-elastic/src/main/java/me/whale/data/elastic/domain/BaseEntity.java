@@ -6,13 +6,19 @@ import java.util.Date;
 public abstract class BaseEntity implements Serializable {
     private static final long serialVersionUID = -6356193698399207192L;
 
+    /**
+     * elastic id
+     */
     private String id;
 
-    private String createdBy;
+    /**
+     * the user id of creator
+     */
+    private Long createdBy;
 
     private Date createdAt;
 
-    private String updatedBy;
+    private Long updatedBy;
 
     private Date updatedAt;
 
@@ -26,11 +32,11 @@ public abstract class BaseEntity implements Serializable {
         this.id = id;
     }
 
-    public String getCreatedBy() {
+    public Long getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(Long createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -42,11 +48,11 @@ public abstract class BaseEntity implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public String getUpdatedBy() {
+    public Long getUpdatedBy() {
         return updatedBy;
     }
 
-    public void setUpdatedBy(String updatedBy) {
+    public void setUpdatedBy(Long updatedBy) {
         this.updatedBy = updatedBy;
     }
 

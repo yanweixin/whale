@@ -4,10 +4,10 @@ plugins {
 
 val commonsLangVersion: String by rootProject.extra
 val commonTextVersion: String by rootProject.extra
-val poiVersion by extra("5.0.0")
+val poiVersion: String by rootProject.extra
 val jacksonVersion: String by rootProject.extra
-val snakeYamlVersion by extra("1.29")
-val univocityVersion by extra("2.9.1")
+val snakeYamlVersion: String by rootProject.extra
+val univocityVersion: String by rootProject.extra
 
 dependencies {
     api("org.apache.commons:commons-lang3:${commonsLangVersion}")

@@ -43,8 +43,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-log4j2:${springVersion}")
 
     // Use JUnit Jupiter API for testing.
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
+    testImplementation(platform("org.junit:junit-bom:${junitVersion}"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation(kotlin("test"))
     testImplementation("org.assertj:assertj-core:3.20.2")
     // Use JUnit Jupiter Engine for testing.

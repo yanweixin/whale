@@ -6,9 +6,13 @@ public enum ContentStatus {
      */
     PUBLIC,
     /**
-     * only can be viewed by self
+     * can be viewed by followers
      */
     PRIVATE,
+    /**
+     * only can be viewed by self
+     */
+    SELF,
     /**
      * can be viewed by friends
      */
@@ -18,9 +22,13 @@ public enum ContentStatus {
      */
     SELECTED,
     /**
-     * has be deleted
+     * has been deleted
      */
     DELETED,
+    /**
+     * has been updated by user
+     */
+    OUTDATED,
     ;
 
 }

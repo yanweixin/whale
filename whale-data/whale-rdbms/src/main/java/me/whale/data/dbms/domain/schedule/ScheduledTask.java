@@ -1,4 +1,4 @@
-package me.whale.data.dbms.domain.system.schedule;
+package me.whale.data.dbms.domain.schedule;
 
 import me.whale.common.enums.system.TaskStatus;
 import me.whale.data.dbms.domain.BaseEntity;

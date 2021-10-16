@@ -1,7 +1,7 @@
-package me.whale.data.dbms.repository.backend;
+package me.whale.data.dbms.repository.schedule;
 
 import me.whale.common.enums.general.YesOrNo;
-import me.whale.data.dbms.domain.system.schedule.ScheduleNode;
+import me.whale.data.dbms.domain.schedule.ScheduleNode;
 import me.whale.data.dbms.projection.ScheduleNodeBase;
 import me.whale.data.dbms.repository.CustomRepository;
 

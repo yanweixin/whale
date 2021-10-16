@@ -16,6 +16,11 @@ plugins {
     `maven-publish`
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
@@ -64,6 +69,10 @@ publishing {
             }
         }
     }
+}
+
+tasks.withType<Javadoc> {
+    (options as StandardJavadocDocletOptions).addStringOption("Xdoclint:none", "-quiet")
 }
 
 tasks.register("fixPom") {

@@ -10,13 +10,15 @@ plugins {
 repositories {
     // Use the plugin portal to apply community plugins in convention plugins.
     gradlePluginPortal()
+    maven { url = uri("https://repo.spring.io/milestone") }
+    maven { url = uri("https://repo.spring.io/snapshot") }
 }
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin")
     implementation("org.jetbrains.kotlin:kotlin-noarg")
     implementation("org.jetbrains.kotlin:kotlin-allopen")
-    implementation("org.springframework.boot:spring-boot-gradle-plugin:2.5.4")
+    implementation("org.springframework.boot:spring-boot-gradle-plugin:2.6.0-SNAPSHOT")
 //    implementation(platform("org.springframework.boot:spring-boot-dependencies:2.5.2"))
     implementation("me.champeau.jmh:jmh-gradle-plugin:0.6.5")
     implementation("gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0")

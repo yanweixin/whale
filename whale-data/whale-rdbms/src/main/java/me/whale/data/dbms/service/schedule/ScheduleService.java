@@ -1,10 +1,10 @@
 package me.whale.data.dbms.service.schedule;
 
-import me.whale.data.dbms.domain.system.schedule.ScheduleNode;
+import me.whale.data.dbms.domain.schedule.ScheduleNode;
 import me.whale.data.dbms.projection.ScheduleNodeBase;
-import me.whale.data.dbms.repository.backend.NodeActionRepository;
-import me.whale.data.dbms.repository.backend.ScheduleNodeRepository;
-import me.whale.data.dbms.repository.backend.ScheduleTaskRepository;
+import me.whale.data.dbms.repository.schedule.NodeActionRepository;
+import me.whale.data.dbms.repository.schedule.ScheduleNodeRepository;
+import me.whale.data.dbms.repository.schedule.ScheduleTaskRepository;
 import org.springframework.stereotype.Service;
 
 @Service

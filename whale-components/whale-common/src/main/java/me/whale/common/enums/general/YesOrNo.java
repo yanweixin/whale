@@ -2,13 +2,13 @@ package me.whale.common.enums.general;
 
 public enum YesOrNo {
     /**
-     * true and yes
-     */
-    Y,
-    /**
      * false and no
      */
     N,
+    /**
+     * true and yes
+     */
+    Y,
     ;
 
     public static YesOrNo fromBoolean(boolean trueOrFalse) {
