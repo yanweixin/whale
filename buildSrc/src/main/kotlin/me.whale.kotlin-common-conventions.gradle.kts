@@ -16,8 +16,8 @@ repositories {
 
 group = "me.whale"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
-java.targetCompatibility = JavaVersion.VERSION_11
+java.sourceCompatibility = JavaVersion.VERSION_17
+java.targetCompatibility = JavaVersion.VERSION_17
 
 val junitVersion: String by rootProject.extra
 val jmhVersion: String by rootProject.extra

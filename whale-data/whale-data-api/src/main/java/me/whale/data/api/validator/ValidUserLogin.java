@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = UserLoginValidator.class)
 @Documented
 public @interface ValidUserLogin {
-    String message() default "{me.whale.message.valid.user.login}";
+    String message() default "{me.whale.validator.ValidUserLogin.message}";
     Class<?>[] groups() default { };
     Class<? extends Payload>[] payload() default { };
 }

@@ -1,8 +1,10 @@
 package me.whale.data.api.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Address implements Serializable {
+    @Serial
     private static final long serialVersionUID = -6208078465506013715L;
     private String countryCode;
     private String provinceCode;

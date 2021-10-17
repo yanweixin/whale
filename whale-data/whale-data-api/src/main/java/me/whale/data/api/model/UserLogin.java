@@ -6,10 +6,12 @@ import me.whale.data.api.validator.ValidEmail;
 import me.whale.data.api.validator.ValidPhone;
 import me.whale.data.api.validator.ValidUserLogin;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @ValidUserLogin
 public class UserLogin implements Serializable {
+    @Serial
     private static final long serialVersionUID = 3060513246209703442L;
     @NotBlank
     @Size(min = 6, max = 127)

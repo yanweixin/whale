@@ -12,6 +12,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
+import java.io.Serial;
 import java.util.Date;
 import java.util.Objects;
 import java.util.stream.Stream;
@@ -19,6 +20,7 @@ import java.util.stream.Stream;
 @MappedSuperclass
 @EntityListeners({AuditingEntityListener.class})
 public abstract class BaseEntity extends IdEntity {
+    @Serial
     private static final long serialVersionUID = -79495259528154026L;
 
     @NotNull
