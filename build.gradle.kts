@@ -40,3 +40,26 @@ subprojects {
         }
     }
 }
+
+tasks.register("start") {
+    val taskMap: MutableMap<Project, JavaExec> = mutableMapOf()
+    allprojects {
+        project.tasks.withType(JavaExec::class.java).forEach { javaExec ->
+            taskMap[project]?.let {
+                if (it.name != "bootRun" && it.name == "run") {
+                    taskMap[project] = it
+                }
+            } ?: run {
+                taskMap[project] = javaExec
+            }
+        }
+    }
+    taskMap.forEach {
+        val p = it.key
+        val t = it.value
+        if (p.parent?.name == "whale-web" || p.name in setOf("whale-rdbms", "whale-service")) {
+            println("Start running ${p.name} -> ${t.name}")
+            dependsOn(t.path)
+        }
+    }
+}

@@ -10,10 +10,3 @@ dependencies {
 application {
     mainClass.set("me.whale.components.service.ServerApplication")
 }
-
-tasks.register("bootRun") {
-    dependsOn("run")
-    doLast {
-        println("${project.name} started running")
-    }
-}
