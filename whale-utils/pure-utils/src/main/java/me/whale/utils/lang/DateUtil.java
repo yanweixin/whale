@@ -17,20 +17,25 @@ public final class DateUtil {
     private final static DateTimeFormatter DATE_FORMATTER_SAFE_STRING = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public static LocalDateTime toLocalDateTime(Date date) {
+        //return LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
 
-    public static Date stringToDate(String source) {
+    public static Date toDate(LocalDateTime localDateTime) {
+        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+    }
+
+    public static Date toDate(String source) {
         return Date.from(LocalDate.parse(source, DATE_FORMATTER).atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 
-    public static Date[] stringToDate(String[] sources) {
+    public static Date[] toDate(String[] sources) {
         if (sources.length == 0) {
             throw new IndexOutOfBoundsException("Array length must be greater than zero");
         }
         Date[] dates = new Date[sources.length];
         for (int i = 0; i < sources.length; i++) {
-            dates[i] = stringToDate(sources[i]);
+            dates[i] = toDate(sources[i]);
         }
         return dates;
     }

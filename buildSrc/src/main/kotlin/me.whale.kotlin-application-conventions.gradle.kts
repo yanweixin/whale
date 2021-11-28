@@ -9,3 +9,11 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
 }
+
+application {
+    applicationDefaultJvmArgs = listOf(
+        "-Dfile.encoding=UTF-8",
+        "-XX:+HeapDumpOnOutOfMemoryError", "-Xms128m", "-Xmx512m",
+        "-XX:+UseDynamicNumberOfGCThreads", "-XX:+UseZGC"
+    )
+}

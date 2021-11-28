@@ -12,6 +12,10 @@ repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
     mavenLocal()
+    maven {
+        url = uri("http://whale.io:8081/repository/maven-public/")
+        isAllowInsecureProtocol = true
+    }
 }
 
 group = "me.whale"

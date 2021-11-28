@@ -17,7 +17,8 @@ public final class RedisOps {
     private RedisOps() {
         LOGGER.info("start create redisson client");
         try {
-            Config config = Config.fromYAML(ClassUtil.getResourceAsStream("redis-cluster.yml"));
+            Config config = Config.fromYAML(ClassUtil.getResourceAsStream("CLUSTER".equals(System.getenv("REDIS_MODE")) ?
+                    "redis-cluster.yml" : "redis.yml"));
             redisson = Redisson.create(config);
         } catch (IOException e) {
             LOGGER.error("create redisson client error ", e);

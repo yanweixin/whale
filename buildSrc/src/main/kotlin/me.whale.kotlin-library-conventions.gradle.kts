@@ -23,6 +23,7 @@ java {
 
 publishing {
     publications {
+        // maven publication
         create<MavenPublication>("mavenJava") {
             afterEvaluate {
                 groupId = project.group.toString()
@@ -66,6 +67,22 @@ publishing {
                     developerConnection.set("scm:git:ssh://example.com/my-library.git")
                     url.set("http://example.com/my-library/")
                 }
+            }
+        }
+        // publish to nexus repository
+        repositories {
+            maven {
+                val usr: String by project
+                val pwd: String by project
+                credentials {
+                    username = usr
+                    password = pwd
+                }
+                isAllowInsecureProtocol = true
+                val repoUrl = "http://whale.io:8081/repository/"
+                val releasesRepoUrl = repoUrl + "maven-releases/"
+                val snapshotsRepoUrl = repoUrl + "maven-snapshots/"
+                url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
             }
         }
     }

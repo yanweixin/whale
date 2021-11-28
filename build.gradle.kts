@@ -1,13 +1,13 @@
 extra.apply {
     set("junitVersion", "5.7.2")
     set("jmhVersion", "1.32")
-    set("springVersion", "2.5.5")
-    set("vertxVersion", "4.1.5")
+    set("springVersion", "2.6.0")
+    set("vertxVersion", "4.2.1")
     set("grpcVersion", "1.41.0")
     set("protocVersion", "3.17.2")
-    set("elasticVersion", "7.15.1")
-    set("redissonVersion", "3.16.3")
-    set("caffeineVersion", "3.0.3")
+    set("elasticVersion", "7.15.2")
+    set("redissonVersion", "3.16.4")
+    set("caffeineVersion", "3.0.4")
     set("poiVersion", "5.0.0")
     set("jacksonVersion", "2.13.0")
     set("commonsLangVersion", "3.12.0")
@@ -28,7 +28,7 @@ allprojects {
 }
 
 subprojects {
-    val buildStr = "build"
+    val buildStr = "publish"
     val publishToMavenLocalStr = "publishToMavenLocal"
     val allTasks = project.getAllTasks(false)
     if (project.subprojects.isEmpty()) {
