@@ -16,6 +16,6 @@ class ReporterController {
         response.setContentType("application/octet-stream")
         response.setHeader("Content-Disposition", "attachment;fileName=" + "test.xlsx")
 //        response.flushBuffer()
-        PoiUtil.writeData(response.outputStream, true, "null", listOf(UserVo("1234")))
+        PoiUtil.writeData(response.outputStream, true, "null", listOf(UserVo("1234","","","","")))
     }
 }

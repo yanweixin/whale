@@ -4,7 +4,7 @@ import me.whale.data.dbms.domain.BaseEntity;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public class TbUser extends BaseEntity {
@@ -14,7 +14,7 @@ public class TbUser extends BaseEntity {
     @NotBlank
     private String userName;
     private String gender;
-    private Date birthday;
+    private LocalDate birthday;
     @NotBlank
     private String password;
 
@@ -42,11 +42,11 @@ public class TbUser extends BaseEntity {
         this.gender = gender;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 

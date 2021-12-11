@@ -4,6 +4,10 @@ File("$rootDir/whale-web").list { dir, name -> File(dir, name).isDirectory && na
     include("whale-web:$it")
 }
 
+File("$rootDir/whale-library").list { dir, name -> File(dir, name).isDirectory && name != "build" }!!.forEach {
+    include("whale-library:$it")
+}
+
 File("$rootDir/whale-utils").list { dir, name -> File(dir, name).isDirectory && name != "build" }!!.forEach {
     include("whale-utils:$it")
 }

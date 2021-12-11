@@ -79,7 +79,7 @@ publishing {
                     password = pwd
                 }
                 isAllowInsecureProtocol = true
-                val repoUrl = "http://whale.io:8081/repository/"
+                val repoUrl = "http://nexus.whale.io:8081/repository/"
                 val releasesRepoUrl = repoUrl + "maven-releases/"
                 val snapshotsRepoUrl = repoUrl + "maven-snapshots/"
                 url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)

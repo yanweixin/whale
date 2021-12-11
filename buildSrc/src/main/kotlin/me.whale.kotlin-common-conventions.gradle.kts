@@ -45,6 +45,7 @@ dependencies {
     implementation(kotlin("reflect"))
 
     implementation("org.springframework.boot:spring-boot-starter-log4j2:${springVersion}")
+    implementation("javax.inject:javax.inject:1")
 
     // Use JUnit Jupiter API for testing.
     testImplementation(platform("org.junit:junit-bom:${junitVersion}"))

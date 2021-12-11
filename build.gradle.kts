@@ -57,7 +57,7 @@ tasks.register("start") {
     taskMap.forEach {
         val p = it.key
         val t = it.value
-        if (p.parent?.name == "whale-web" || p.name in setOf("whale-rdbms", "whale-service")) {
+        if (p.parent?.name == "whale-web" || p.name in setOf("whale-rdbms", "whale-common-service")) {
             println("Start running ${p.name} -> ${t.name}")
             dependsOn(t.path)
         }

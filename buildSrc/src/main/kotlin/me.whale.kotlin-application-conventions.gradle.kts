@@ -12,8 +12,9 @@ plugins {
 
 application {
     applicationDefaultJvmArgs = listOf(
-        "-Dfile.encoding=UTF-8",
-        "-XX:+HeapDumpOnOutOfMemoryError", "-Xms128m", "-Xmx512m",
-        "-XX:+UseDynamicNumberOfGCThreads", "-XX:+UseZGC"
+        "-Dfile.encoding=UTF-8", "-Xms128m", "-Xmx512m",
+        "-XX:+HeapDumpOnOutOfMemoryError", "-XX:HeapDumpPath=./java_pid<pid>.hprof", "-XX:+UseGCOverheadLimit",
+        "-XX:+UseDynamicNumberOfGCThreads", "-XX:+UseZGC",
+        "-Xlog:gc*:file=./build/%p_gc.log::filecount=10,filesize=100M"
     )
 }

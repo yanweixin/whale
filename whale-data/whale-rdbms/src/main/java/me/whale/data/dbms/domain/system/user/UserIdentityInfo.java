@@ -7,9 +7,11 @@ import me.whale.data.dbms.domain.BaseEntity;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.io.Serial;
 
 @Entity
 public class UserIdentityInfo extends BaseEntity {
+    @Serial
     private static final long serialVersionUID = -8497103552742470946L;
     private Long userId;
     @Enumerated(EnumType.STRING)
