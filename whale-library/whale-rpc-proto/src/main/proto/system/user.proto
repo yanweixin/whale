@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "http.proto";
+
 option java_multiple_files = true;
 option java_package = "me.whale.components.service.system";
 option java_outer_classname = "UserProto";
@@ -19,7 +21,5 @@ message UserRequest{
 }
 
 message UserReply{
-  bool success = 1;
-  int32 code = 2;
-  string message = 3;
+  common.HttpReply result = 1;
 }

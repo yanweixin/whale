@@ -13,7 +13,7 @@ repositories {
     mavenCentral()
     mavenLocal()
     maven {
-        url = uri("http://whale.io:8081/repository/maven-public/")
+        url = uri("http://nexus.whale.io:8081/repository/maven-public/")
         isAllowInsecureProtocol = true
     }
 }
@@ -24,6 +24,7 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 java.targetCompatibility = JavaVersion.VERSION_17
 
 val junitVersion: String by rootProject.extra
+val assertjVersion: String by rootProject.extra
 val jmhVersion: String by rootProject.extra
 val springVersion: String by rootProject.extra
 
@@ -33,7 +34,7 @@ dependencies {
         implementation("org.apache.commons:commons-text:${rootProject.extra["commonTextVersion"]}")
         implementation("org.apache.commons:commons-math:3.6.1")
         implementation("org.apache.commons:commons-lang3:${rootProject.extra["commonsLangVersion"]}")
-        implementation("commons-io:commons-io:2.10.0")
+        implementation("commons-io:commons-io:${rootProject.extra["commonIoVersion"]}")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
         implementation("com.fasterxml.jackson.core:jackson-databind:${rootProject.extra["jacksonVersion"]}")
     }
@@ -51,7 +52,7 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:${junitVersion}"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation(kotlin("test"))
-    testImplementation("org.assertj:assertj-core:3.20.2")
+    testImplementation("org.assertj:assertj-core:${assertjVersion}")
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
@@ -79,6 +80,11 @@ tasks.withType<KotlinCompile> {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "11"
     }
+}
+
+tasks.withType<JavaCompile> {
+    options.compilerArgs.addAll(listOf("-Xlint:unchecked"))
+    options.isDeprecation = true
 }
 
 tasks.withType<Test> {

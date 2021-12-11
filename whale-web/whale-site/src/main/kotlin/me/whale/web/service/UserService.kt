@@ -19,17 +19,17 @@ class UserService {
         val userRequest = UserRequest.newBuilder()
             .setUserNo(user.userNo)
             .setUserName(user.userName)
-            .setGender(user.gender)
-            .setBirthday(user.birthday)
+            .setGender(user.gender ?: "")
+            .setBirthday(user.birthday ?: "")
             .setPassword(user.password)
-            .build();
+            .build()
         val response: UserReply
         try {
             val blockingStub = UserApiGrpc.newBlockingStub(grpcClient.channel)
             response = blockingStub.add(userRequest)
-            return ResponseEntity.ok(response.message)
+            return ResponseEntity.ok(response.result.message)
         } catch (e: StatusRuntimeException) {
-            logger.warn("RPC failed: {0}", e.status)
+            logger.warn("RPC failed: {}", e.status)
         }
         return ResponseEntity.badRequest().build()
     }

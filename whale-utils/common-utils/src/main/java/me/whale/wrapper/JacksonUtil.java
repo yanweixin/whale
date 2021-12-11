@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.guava.GuavaModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.module.kotlin.KotlinFeature;
 import com.fasterxml.jackson.module.kotlin.KotlinModule;
 import org.apache.commons.lang3.StringUtils;
 
@@ -25,7 +26,7 @@ public final class JacksonUtil {
 
     static {
         KotlinModule kotlinModule = new KotlinModule.Builder()
-                .strictNullChecks(true)
+                .configure(KotlinFeature.StrictNullChecks, true)
                 .build();
         JSON_MAPPER = JsonMapper.builder()
                 .addModule(new GuavaModule())

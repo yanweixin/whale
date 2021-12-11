@@ -89,6 +89,7 @@ public class GrpcServer {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private List<BindableService> findGrpcService() {
         List<BindableService> bindableServices = new ArrayList<>();
         try {

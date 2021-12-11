@@ -6,7 +6,21 @@ build
 
 # ignore editors
 .idea
-.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
 
 # ignore files
 .DS_Store
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
