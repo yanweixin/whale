@@ -1,11 +1,11 @@
 package me.whale.web.service
 
 import io.grpc.StatusRuntimeException
-import me.whale.data.api.view.UserVo
 import me.whale.components.rpc.GrpcClient
 import me.whale.components.service.system.UserApiGrpc
 import me.whale.components.service.system.UserReply
 import me.whale.components.service.system.UserRequest
+import me.whale.web.view.UserVo
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
@@ -19,8 +19,8 @@ class UserService {
         val userRequest = UserRequest.newBuilder()
             .setUserNo(user.userNo)
             .setUserName(user.userName)
-            .setGender(user.gender ?: "")
-            .setBirthday(user.birthday ?: "")
+            .setGender(user.gender)
+            .setBirthday(user.birthday)
             .setPassword(user.password)
             .build()
         val response: UserReply

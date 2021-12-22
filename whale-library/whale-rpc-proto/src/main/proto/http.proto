@@ -7,7 +7,15 @@ option java_outer_classname = "HttpProto";
 package common;
 
 message HttpReply{
-  bool success = 1;
-  int32 code = 2;
-  optional string message = 3;
+  int64 date = 1;
+  bool success = 2;
+  int32 code = 3;
+  optional string message = 4;
+}
+
+message PageResult{
+  int32 numOfElements = 1;
+  int32 page = 2;
+  int32 size = 3;
+  bool hasMore = 4;
 }

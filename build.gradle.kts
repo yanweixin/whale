@@ -1,11 +1,11 @@
 extra.apply {
     set("junitVersion", "5.8.1")
-    set("assertjVersion","3.21.0")
+    set("assertjVersion", "3.21.0")
     set("jmhVersion", "1.32")
     set("springVersion", "2.6.1")
     set("vertxVersion", "4.2.1")
-    set("grpcVersion", "1.41.0")
-    set("protocVersion", "3.17.2")
+    set("grpcVersion", "1.42.1")
+    set("protocVersion", "3.19.1")
     set("elasticVersion", "7.15.2")
     set("redissonVersion", "3.16.6")
     set("caffeineVersion", "3.0.4")
@@ -26,6 +26,12 @@ allprojects {
         all {
             exclude("org.springframework.boot", "spring-boot-starter-logging")
             exclude("org.springframework.boot", "spring-boot-starter-tomcat")
+            resolutionStrategy.eachDependency {
+                when (requested.group) {
+                    "io.grpc" -> useVersion(rootProject.extra.get("grpcVersion") as String)
+                    "com.google.protobuf" -> useVersion(rootProject.extra.get("protocVersion") as String)
+                }
+            }
         }
     }
 }

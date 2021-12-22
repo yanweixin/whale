@@ -1,6 +1,5 @@
 package me.whale.backend.controller
 
-import me.whale.data.api.view.UserVo
 import me.whale.wrapper.PoiUtil
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -16,6 +15,6 @@ class ReporterController {
         response.setContentType("application/octet-stream")
         response.setHeader("Content-Disposition", "attachment;fileName=" + "test.xlsx")
 //        response.flushBuffer()
-        PoiUtil.writeData(response.outputStream, true, "null", listOf(UserVo("1234","","","","")))
+        PoiUtil.writeData(response.outputStream, true, "null", listOf("123"))
     }
 }

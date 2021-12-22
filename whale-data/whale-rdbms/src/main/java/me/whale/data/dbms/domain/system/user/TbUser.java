@@ -4,19 +4,35 @@ import me.whale.data.dbms.domain.BaseEntity;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
+import java.io.Serial;
 import java.time.LocalDate;
 
 @Entity
 public class TbUser extends BaseEntity {
+    @Serial
     private static final long serialVersionUID = 5586653054373083223L;
+    /**
+     * @see TbAccount
+     */
+    private Long accountId;
+    @Deprecated
     @NotBlank
     private String userNo;
+    @Deprecated
     @NotBlank
     private String userName;
     private String gender;
     private LocalDate birthday;
     @NotBlank
     private String password;
+
+    public Long getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
+    }
 
     public String getUserNo() {
         return userNo;

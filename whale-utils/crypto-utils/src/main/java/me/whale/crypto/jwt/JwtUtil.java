@@ -1,4 +1,4 @@
-package me.whale.codec;
+package me.whale.crypto.jwt;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;

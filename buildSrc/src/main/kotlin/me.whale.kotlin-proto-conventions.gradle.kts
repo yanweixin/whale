@@ -5,22 +5,19 @@ plugins {
     id("com.google.protobuf")
 }
 
-val grpcVersion: String by rootProject.extra
-val protocVersion: String by rootProject.extra
-
 dependencies {
-    implementation("io.grpc:grpc-protobuf:${grpcVersion}")
-    implementation("io.grpc:grpc-stub:${grpcVersion}")
+    implementation("io.grpc:grpc-protobuf")
+    implementation("io.grpc:grpc-stub")
     compileOnly("org.apache.tomcat:annotations-api:6.0.53") // necessary for Java 9+
 }
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:${protocVersion}"
+        artifact = "com.google.protobuf:protoc"
     }
     plugins {
         id("grpc") {
-            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+            artifact = "io.grpc:protoc-gen-grpc-java"
         }
     }
     generateProtoTasks {

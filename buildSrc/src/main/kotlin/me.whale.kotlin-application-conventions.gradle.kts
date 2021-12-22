@@ -18,3 +18,7 @@ application {
         "-Xlog:gc*:file=./build/%p_gc.log::filecount=10,filesize=100M"
     )
 }
+
+tasks.withType<JavaExec> {
+    environment("APP_NAME", project.name)
+}

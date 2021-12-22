@@ -110,7 +110,10 @@ tasks.withType<JavaExec> {
 }
 
 tasks.processResources {
-    from("$rootDir/config/resources")
+    from("$rootDir/config/resources") {
+        filter(org.apache.tools.ant.filters.FixCrLfFilter::class)
+        filter(org.apache.tools.ant.filters.ReplaceTokens::class, "tokens" to mapOf("whale" to project.name))
+    }
 }
 
 tasks.shadowJar {
