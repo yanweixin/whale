@@ -1,14 +1,14 @@
 version: "3.8"
 services:
-  mydb01:
+  mydb:
     image: docker.io/mysql/mysql-server:${MYSQL_VERSION}
-    container_name: mysql01
+    container_name: mysql
     ports:
       - 30031:3306
     volumes:
-      - ./conf.d/my.cnf:/etc/mysql/my.cnf
-      - ./mysql-initdb.d:/docker-entrypoint-initdb.d/
-      - /opt/mysql/data01:/var/lib/mysql
+      - ../conf.d/my.cnf:/etc/mysql/my.cnf
+      - ../data/mysql-initdb.d:/docker-entrypoint-initdb.d/
+      - /srv/mysql/data:/var/lib/mysql
       - /etc/ssl/certs/mysql:/etc/ssl/certs/mysql
     networks:
       - mysql
@@ -22,59 +22,6 @@ services:
         reservations:
           cpus: '0.25'
           memory: 100m
-      restart_policy:
-        condition: any
-        window: 5s
-
-  mydb02:
-    image: docker.io/mysql/mysql-server:${MYSQL_VERSION}
-    container_name: mysql02
-    volumes:
-      - ./conf.d/my-replica01.cnf:/etc/mysql/my.cnf
-      - /opt/mysql/data02:/var/lib/mysql
-      - /etc/ssl/certs/mysql:/etc/ssl/certs/mysql
-    networks:
-      - mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_PASS}
-    depends_on:
-      - mydb01
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 1g
-        reservations:
-          cpus: '0.25'
-          memory: 100m
-      restart_policy:
-        condition: any
-        window: 5s
-
-  mydb03:
-    image: docker.io/mysql/mysql-server:${MYSQL_VERSION}
-    container_name: mysql03
-    volumes:
-      - ./conf.d/my-replica02.cnf:/etc/mysql/my.cnf
-      - /opt/mysql/data03:/var/lib/mysql
-      - /etc/ssl/certs/mysql:/etc/ssl/certs/mysql
-    networks:
-      - mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_PASS}
-    depends_on:
-      - mydb01
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 1g
-        reservations:
-          cpus: '0.25'
-          memory: 100m
-      restart_policy:
-        condition: any
-        window: 5s
 
   pgdb:
     image: docker.io/library/postgres:${POSTGRES_VERSION}
@@ -82,11 +29,11 @@ services:
     ports:
       - 5000:5432
     volumes:
-      - ./conf.d/postgres.conf:/etc/postgresql/postgresql.conf
-      - ./postgres-initdb.d:/docker-entrypoint-initdb.d/
-      - /opt/postgresql/data:/var/lib/postgresql/data
+      - ../conf.d/postgres.conf:/etc/postgresql/postgresql.conf
+      - ../data/postgres-initdb.d:/docker-entrypoint-initdb.d/
+      - /srv/postgresql/data:/var/lib/postgresql/data
     networks:
-      - postgres
+      - database
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASS}
       - POSTGRES_INITDB_ARGS=--data-checksums --encoding=UTF8 --locale=C --auth=scram-sha-256
@@ -99,36 +46,57 @@ services:
         reservations:
           cpus: '0.25'
           memory: 100m
-      restart_policy:
-        condition: any
-        window: 5s
 
-  mysql-haproxy:
-    image: docker.io/library/haproxy:2.4.2
-    container_name: mysql-haproxy
+  redis-single:
+    image: docker.io/library/redis:${REDIS_VERSION}
+    container_name: redis-single
+    command: redis-server /usr/local/etc/redis/redis.conf
     ports:
-      - 30032:3306
+      - 6379:6379
+      - 16379:16379
     volumes:
-      - ./conf.d/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
-      - /dev/log:/dev/log
+      - ../conf.d/redis.conf:/usr/local/etc/redis/redis.conf:ro
+      - /srv/redis/data:/data
     networks:
-      - mysql
-    sysctls:
-      net.ipv4.ip_unprivileged_port_start: 0
-    depends_on:
-      - mydb01
-      - mydb02
-      - mydb03
+      - redis
     deploy:
       resources:
         limits:
-          cpus: '0.5'
+          cpus: '0.25'
           memory: 50m
+        reservations:
+          cpus: '0.1'
+          memory: 20m
+
+  oracle:
+    image: container-registry.oracle.com/database/enterprise:${ORACLE_VERSION}
+    container_name: oracle
+    ports:
+      - 1521:1521
+      - 5500:5500
+    volumes:
+      - /srv/oracle/data:/opt/oracle/oradata
+    networks:
+      - database
+    environment:
+      - ORACLE_PWD=${ORACLE_PASS}
+      - ENABLE_ARCHIVELOG=true
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2g
+        reservations:
+          cpus: '0.5'
+          memory: 2g
 
 networks:
   mysql:
     driver: bridge
     name: mysql
-  postgres:
+  redis:
     driver: bridge
-    name: postgres
+    name: redis
+  database:
+    driver: bridge
+    name: database
