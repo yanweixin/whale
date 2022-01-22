@@ -3,11 +3,11 @@ package me.whale.data.dbms.domain.system.base;
 import me.whale.common.enums.system.AppModule;
 import me.whale.data.dbms.domain.BaseEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class SystemConfig extends BaseEntity {

@@ -19,5 +19,6 @@ public interface ScheduleNodeRepository extends CustomRepository<ScheduleNode, L
 
     Integer findLatestVersionByBizType(String bizType);
 
-    ScheduleNodeBase findFirstByBizTypeAndVersionAndPreviousNode(String bizType, Integer version, Long previousNode);
+    //TODO: adjust to spring jpa 3.0
+//    ScheduleNodeBase findFirstByBizTypeAndVersionAndPreviousNode(String bizType, Integer version, Long previousNode);
 }

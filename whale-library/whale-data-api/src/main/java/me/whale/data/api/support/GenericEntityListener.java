@@ -1,7 +1,7 @@
 package me.whale.data.api.support;
 
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import java.util.Objects;
 
 public class GenericEntityListener {

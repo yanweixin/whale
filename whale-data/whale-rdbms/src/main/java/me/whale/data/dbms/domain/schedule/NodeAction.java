@@ -3,7 +3,7 @@ package me.whale.data.dbms.domain.schedule;
 import me.whale.common.enums.general.YesOrNo;
 import me.whale.data.dbms.domain.BaseEntity;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 /**
  * @author weixin

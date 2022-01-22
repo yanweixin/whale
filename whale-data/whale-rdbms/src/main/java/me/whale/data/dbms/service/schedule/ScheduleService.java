@@ -29,6 +29,7 @@ public class ScheduleService {
         if (latestVersion == null) {
             return null;
         }
-        return scheduleNodeRepository.findFirstByBizTypeAndVersionAndPreviousNode(bizType, latestVersion, null);
+        return null;
+//        return scheduleNodeRepository.findFirstByBizTypeAndVersionAndPreviousNode(bizType, latestVersion, null);
     }
 }

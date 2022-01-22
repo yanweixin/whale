@@ -4,8 +4,8 @@ import me.whale.common.enums.personal.LoginMethod;
 import me.whale.data.dbms.domain.IdEntity;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotNull;
 import java.net.InetAddress;
 import java.util.Date;
 

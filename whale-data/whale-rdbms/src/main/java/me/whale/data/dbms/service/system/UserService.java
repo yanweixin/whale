@@ -8,13 +8,13 @@ import me.whale.components.service.system.UserReply;
 import me.whale.components.service.system.UserRequest;
 import me.whale.data.dbms.domain.system.user.TbUser;
 import me.whale.data.dbms.repository.backend.UserRepository;
+import org.springframework.stereotype.Component;
 
-import javax.inject.Named;
 import java.time.LocalDate;
 import java.util.Optional;
 
 @GrpcService
-@Named
+@Component
 public class UserService extends UserApiGrpc.UserApiImplBase {
     private final UserRepository userRepository;
 

@@ -5,9 +5,9 @@ import me.whale.data.dbms.domain.BaseEntity;
 import org.hibernate.annotations.Columns;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * @author weixin

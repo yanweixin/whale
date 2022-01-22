@@ -2,7 +2,7 @@ extra.apply {
     set("junitVersion", "5.8.1")
     set("assertjVersion", "3.21.0")
     set("jmhVersion", "1.32")
-    set("springVersion", "2.6.1")
+    set("springVersion", "2.6.3")
     set("vertxVersion", "4.2.1")
     set("grpcVersion", "1.42.1")
     set("protocVersion", "3.19.1")

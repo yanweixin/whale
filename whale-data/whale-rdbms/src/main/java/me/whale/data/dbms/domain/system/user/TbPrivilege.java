@@ -3,7 +3,7 @@ package me.whale.data.dbms.domain.system.user;
 import me.whale.common.annotation.MultiLangText;
 import me.whale.data.dbms.domain.BaseEntity;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 import java.io.Serial;
 
 @Entity

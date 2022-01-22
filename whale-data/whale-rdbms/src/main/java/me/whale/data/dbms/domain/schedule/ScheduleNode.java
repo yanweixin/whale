@@ -3,9 +3,9 @@ package me.whale.data.dbms.domain.schedule;
 import me.whale.common.enums.general.YesOrNo;
 import me.whale.data.dbms.domain.BaseEntity;
 
-import javax.persistence.Entity;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * @author weixin

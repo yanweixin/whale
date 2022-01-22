@@ -2,8 +2,8 @@ package me.whale.data.dbms.domain.system.user;
 
 import me.whale.data.dbms.domain.BaseEntity;
 
-import javax.persistence.Entity;
-import javax.validation.constraints.NotBlank;
+import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotBlank;
 import java.io.Serial;
 import java.time.LocalDate;
 

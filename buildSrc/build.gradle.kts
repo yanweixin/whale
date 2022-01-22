@@ -18,7 +18,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin")
     implementation("org.jetbrains.kotlin:kotlin-noarg")
     implementation("org.jetbrains.kotlin:kotlin-allopen")
-    implementation("org.springframework.boot:spring-boot-gradle-plugin:2.6.2")
+    implementation("org.springframework.boot:spring-boot-gradle-plugin:3.0.0-M1")
 //    implementation(platform("org.springframework.boot:spring-boot-dependencies:2.5.2"))
     implementation("me.champeau.jmh:jmh-gradle-plugin:0.6.6")
     implementation("gradle.plugin.com.github.johnrengelman:shadow:7.1.0")

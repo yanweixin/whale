@@ -4,9 +4,9 @@ import me.whale.common.enums.general.LogLevel;
 import me.whale.common.enums.system.AppModule;
 import me.whale.data.dbms.domain.BaseEntity;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.NotNull;
 
 public class ManualLog extends BaseEntity {
     private LogLevel logLevel;

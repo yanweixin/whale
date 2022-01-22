@@ -9,8 +9,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.ApplicationContext;
 
-import javax.annotation.Resource;
-import javax.inject.Named;
+import jakarta.annotation.Resource;
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-@Named
+@Component
 public class RpcApplication implements ApplicationRunner {
     private final static Logger LOGGER = LoggerFactory.getLogger(RpcApplication.class);
     @Resource
