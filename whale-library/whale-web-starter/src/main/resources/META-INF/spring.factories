@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+me.whale.spring.starter.web.WhaleWebAutoConfiguration,\
+me.whale.spring.starter.web.GlobalExceptionHandler

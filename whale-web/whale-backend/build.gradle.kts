@@ -5,6 +5,7 @@ plugins {
 dependencies {
     implementation("me.whale:whale-data-api:0.0.1-SNAPSHOT")
     implementation("me.whale:whale-cache:0.0.1-SNAPSHOT")
+    implementation("me.whale:whale-web-starter:0.0.1-SNAPSHOT")
 }
 
 springBoot {
