@@ -1,9 +1,11 @@
 package me.whale.data.dbms.domain.system.user;
 
+import jakarta.validation.constraints.Size;
 import me.whale.data.dbms.domain.BaseEntity;
 
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotBlank;
+
 import java.io.Serial;
 import java.time.LocalDate;
 
@@ -15,12 +17,8 @@ public class TbUser extends BaseEntity {
      * @see TbAccount
      */
     private Long accountId;
-    @Deprecated
-    @NotBlank
-    private String userNo;
-    @Deprecated
-    @NotBlank
-    private String userName;
+    @Size(max = 1024)
+    private String profile;
     private String gender;
     private LocalDate birthday;
     @NotBlank
@@ -34,20 +32,12 @@ public class TbUser extends BaseEntity {
         this.accountId = accountId;
     }
 
-    public String getUserNo() {
-        return userNo;
+    public String getProfile() {
+        return profile;
     }
 
-    public void setUserNo(String userNo) {
-        this.userNo = userNo;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 
     public String getGender() {

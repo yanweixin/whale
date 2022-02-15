@@ -6,5 +6,5 @@ import me.whale.data.dbms.repository.CustomRepository;
 import java.util.Optional;
 
 public interface UserRepository extends CustomRepository<TbUser, Long> {
-    Optional<TbUser> findByUserNo(String userNo);
+    Optional<TbUser> findByAccountId(Long accountId);
 }

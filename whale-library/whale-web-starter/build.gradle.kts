@@ -14,6 +14,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-autoconfigure")
     compileOnly("org.springframework:spring-web")
     compileOnly("org.hibernate.validator:hibernate-validator")
+    compileOnly("jakarta.servlet:jakarta.servlet-api")
 }
 
 tasks.bootJar {

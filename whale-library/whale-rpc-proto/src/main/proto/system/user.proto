@@ -10,6 +10,7 @@ package system;
 
 service UserApi{
   rpc add (UserRequest) returns (UserReply){}
+  rpc authenticate (AuthRequest) returns (AuthReply){}
 }
 
 message UserRequest{
@@ -22,4 +23,15 @@ message UserRequest{
 
 message UserReply{
   common.HttpReply result = 1;
+}
+
+message AuthRequest{
+  string identityType = 1;
+  string identity = 2;
+  string authCode = 3;
+}
+
+message AuthReply{
+  common.HttpReply result = 1;
+  string token = 2;
 }
