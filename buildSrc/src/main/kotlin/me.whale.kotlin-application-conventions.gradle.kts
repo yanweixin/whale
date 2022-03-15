@@ -25,7 +25,7 @@ application {
 tasks.withType<JavaExec> {
     environment("APP_NAME", project.name)
     val debugPort = getAvailablePort(project.name)
-    println("start debug app ${project.name} on port $debugPort")
+    println("start debug app ${project.name} with task $name on port $debugPort")
     debugOptions {
         enabled.set(true)
         server.set(true)
@@ -37,8 +37,6 @@ tasks.withType<JavaExec> {
 fun getAvailablePort(appName: String): Int? {
     if (!rootProject.extra.has("DEBUG_PORT")) {
         rootProject.extra.set("DEBUG_PORT", mutableMapOf<String, Int>())
-    } else {
-        println(rootProject.extra.get("DEBUG_PORT"))
     }
     val props = rootProject.extra.get("DEBUG_PORT") as MutableMap<String, Int>
     if (props.containsKey(appName)) {
