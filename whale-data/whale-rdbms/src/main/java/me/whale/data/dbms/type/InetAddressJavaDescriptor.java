@@ -23,6 +23,7 @@ public class InetAddressJavaDescriptor extends AbstractTypeDescriptor<InetAddres
         return null;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public <X> X unwrap(InetAddress value, Class<X> type, WrapperOptions options) {
         if (value == null) {

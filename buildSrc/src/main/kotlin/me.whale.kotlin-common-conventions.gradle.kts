@@ -7,6 +7,7 @@ plugins {
     id("me.champeau.jmh")
     id("com.github.johnrengelman.shadow")
 }
+apply<me.whale.gradle.WhalePlugin>()
 
 repositories {
     // Use Maven Central for resolving dependencies.
