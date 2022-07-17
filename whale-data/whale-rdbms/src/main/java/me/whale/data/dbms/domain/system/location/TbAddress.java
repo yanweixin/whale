@@ -2,12 +2,13 @@ package me.whale.data.dbms.domain.system.location;
 
 import me.whale.data.api.model.Address;
 import me.whale.data.dbms.domain.BaseEntity;
+import me.whale.data.dbms.type.AddressType;
 import org.hibernate.annotations.Columns;
-import org.hibernate.annotations.Type;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.CompositeType;
 
 /**
  * @author weixin
@@ -21,11 +22,13 @@ public class TbAddress extends BaseEntity {
      * full name of address owner
      */
     private String fullName;
+
     /**
      * phone number of address owner
      */
+    @NotNull
     private String phone;
-    @Type(type = "me.whale.data.dbms.type.AddressType")
+    @CompositeType(value = AddressType.class)
     @Columns(columns = {@Column(name = "countryCode"), @Column(name = "provinceCode"),
             @Column(name = "cityCode"), @Column(name = "street"), @Column(name = "postalCode")})
     private Address address;

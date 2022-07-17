@@ -20,7 +20,7 @@ extra.apply {
     set("amqpVersion", "5.14.1")
     set("kafkaVersion", "3.1.0")
     set("curatorVersion", "5.2.0")
-    set("hibernateValidatorVersion", "7.0.2.Final")
+    set("hibernateValidatorVersion", "7.0.4.Final")
 }
 
 allprojects {

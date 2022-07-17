@@ -1,7 +1,7 @@
 package me.whale.data.dbms.type;
 
 import org.hibernate.type.AbstractSingleColumnStandardBasicType;
-import org.hibernate.type.descriptor.sql.VarbinaryTypeDescriptor;
+import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
 import java.net.InetAddress;
 
@@ -12,7 +12,7 @@ public class InetAddressType extends AbstractSingleColumnStandardBasicType<InetA
     public static final InetAddressType INSTANCE = new InetAddressType();
 
     public InetAddressType() {
-        super(VarbinaryTypeDescriptor.INSTANCE, InetAddressJavaDescriptor.INSTANCE);
+        super(VarbinaryJdbcType.INSTANCE, InetAddressJavaType.INSTANCE);
     }
 
     @Override

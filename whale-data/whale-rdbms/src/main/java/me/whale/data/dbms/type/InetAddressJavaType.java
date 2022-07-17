@@ -1,26 +1,30 @@
 package me.whale.data.dbms.type;
 
 import org.hibernate.type.descriptor.WrapperOptions;
-import org.hibernate.type.descriptor.java.AbstractTypeDescriptor;
+import org.hibernate.type.descriptor.java.AbstractJavaType;
 import org.hibernate.type.descriptor.java.ImmutableMutabilityPlan;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class InetAddressJavaDescriptor extends AbstractTypeDescriptor<InetAddress> {
+public class InetAddressJavaType extends AbstractJavaType<InetAddress> {
     /**
      * Singleton access
      */
-    public static final InetAddressJavaDescriptor INSTANCE = new InetAddressJavaDescriptor();
+    public static final InetAddressJavaType INSTANCE = new InetAddressJavaType();
 
     @SuppressWarnings("unchecked")
-    public InetAddressJavaDescriptor() {
+    public InetAddressJavaType() {
         super(InetAddress.class, ImmutableMutabilityPlan.INSTANCE);
     }
 
     @Override
-    public InetAddress fromString(String string) {
-        return null;
+    public InetAddress fromString(CharSequence string) {
+        try {
+            return string == null ? null : InetAddress.getByName(string.toString());
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @SuppressWarnings("unchecked")

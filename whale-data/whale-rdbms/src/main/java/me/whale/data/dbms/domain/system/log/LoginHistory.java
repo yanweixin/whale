@@ -1,11 +1,12 @@
 package me.whale.data.dbms.domain.system.log;
 
-import me.whale.common.enums.personal.LoginMethod;
-import me.whale.data.dbms.domain.IdEntity;
-import org.hibernate.annotations.Type;
-
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotNull;
+import me.whale.common.enums.personal.LoginMethod;
+import me.whale.data.dbms.domain.IdEntity;
+import me.whale.data.dbms.type.InetAddressJavaType;
+import org.hibernate.annotations.JavaType;
+
 import java.net.InetAddress;
 import java.util.Date;
 
@@ -22,7 +23,7 @@ public class LoginHistory extends IdEntity {
     private String identity;
     @NotNull
     private LoginMethod loginMethod;
-    @Type(type = "me.whale.data.dbms.type.InetAddressType")
+    @JavaType(InetAddressJavaType.class)
     private InetAddress address;
     @NotNull
     private Date loginDate;

@@ -2,50 +2,36 @@ package me.whale.data.dbms.type;
 
 import me.whale.data.api.model.Address;
 import org.hibernate.HibernateException;
-import org.hibernate.engine.spi.SharedSessionContractImplementor;
-import org.hibernate.usertype.UserType;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
+import org.hibernate.metamodel.spi.ValueAccess;
 
-import java.io.Serializable;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
-import java.util.Objects;
-
-/**
- * @author weixin
- */
-public class AddressType implements UserType {
-    @Override
-    public int[] sqlTypes() {
-        return new int[]{Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.INTEGER};
-    }
+public class AddressType extends CustomCompositeUserType<Address> {
 
     @Override
-    public Class<Address> returnedClass() {
-        return Address.class;
-    }
-
-    @Override
-    public boolean equals(Object x, Object y) throws HibernateException {
-        return Objects.equals(x, y);
-    }
-
-    @Override
-    public int hashCode(Object x) throws HibernateException {
-        return x == null ? 0 : x.hashCode();
-    }
-
-    @Override
-    public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner) throws HibernateException, SQLException {
-        String countryCode = rs.getString(names[0]);
-        String provinceCode = rs.getString(names[1]);
-        String cityCode = rs.getString(names[2]);
-        String street = rs.getString(names[3]);
-        Integer postalCode = rs.getInt(names[4]);
-        if (rs.wasNull()) {
-            postalCode = null;
+    public Object getPropertyValue(Address component, int property) throws HibernateException {
+        switch (property) {
+            case 0:
+                return component.getCityCode();
+            case 1:
+                return component.getCountryCode();
+            case 2:
+                return component.getPostalCode();
+            case 3:
+                return component.getProvinceCode();
+            case 4:
+                return component.getStreet();
+            default:
+                return null;
         }
+    }
+
+    @Override
+    public Address instantiate(ValueAccess values, SessionFactoryImplementor sessionFactory) {
+        String cityCode = values.getValue(0, String.class);
+        String countryCode = values.getValue(1, String.class);
+        Integer postalCode = values.getValue(2, Integer.class);
+        String provinceCode = values.getValue(3, String.class);
+        String street = values.getValue(4, String.class);
         Address address = new Address();
         address.setCountryCode(countryCode);
         address.setProvinceCode(provinceCode);
@@ -56,49 +42,20 @@ public class AddressType implements UserType {
     }
 
     @Override
-    public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
-        if (Objects.isNull(value)) {
-            st.setNull(index, Types.VARCHAR);
-            st.setNull(index + 1, Types.VARCHAR);
-            st.setNull(index + 2, Types.VARCHAR);
-            st.setNull(index + 3, Types.VARCHAR);
-            st.setNull(index + 4, Types.INTEGER);
-        } else {
-            Address address = (Address) value;
-            st.setString(index, address.getCountryCode());
-            st.setString(index + 1, address.getProvinceCode());
-            st.setString(index + 2, address.getCityCode());
-            st.setString(index + 3, address.getStreet());
-            if (Objects.isNull(address.getPostalCode())) {
-                st.setNull(index + 4, Types.INTEGER);
-            } else {
-                st.setInt(index + 4, address.getPostalCode());
-            }
-        }
+    public Class<?> embeddable() {
+        return AddressTypeEmbeddable.class;
     }
 
     @Override
-    public Object deepCopy(Object value) throws HibernateException {
-        return value;
+    public Class<Address> returnedClass() {
+        return Address.class;
     }
 
-    @Override
-    public boolean isMutable() {
-        return false;
-    }
-
-    @Override
-    public Serializable disassemble(Object value) throws HibernateException {
-        return (Serializable) deepCopy(value);
-    }
-
-    @Override
-    public Object assemble(Serializable cached, Object owner) throws HibernateException {
-        return deepCopy(cached);
-    }
-
-    @Override
-    public Object replace(Object original, Object target, Object owner) throws HibernateException {
-        return deepCopy(original);
+    public static class AddressTypeEmbeddable {
+        private String countryCode;
+        private String provinceCode;
+        private String cityCode;
+        private String street;
+        private Integer postalCode;
     }
 }
