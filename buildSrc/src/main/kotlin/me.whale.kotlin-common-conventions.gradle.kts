@@ -28,6 +28,8 @@ val junitVersion: String by rootProject.extra
 val assertjVersion: String by rootProject.extra
 val jmhVersion: String by rootProject.extra
 val springVersion: String by rootProject.extra
+val log4jVersion: String by rootProject.extra
+val slf4jVersion: String by rootProject.extra
 
 dependencies {
     constraints {
@@ -46,8 +48,11 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
 
-    implementation("org.springframework.boot:spring-boot-starter-log4j2:${springVersion}")
-    implementation("jakarta.inject:jakarta.inject-api:1.0")
+    implementation("org.apache.logging.log4j", "log4j-slf4j-impl", log4jVersion)
+    implementation("org.apache.logging.log4j", "log4j-core", log4jVersion)
+    implementation("org.apache.logging.log4j", "log4j-jul", log4jVersion)
+    implementation("org.slf4j", "jul-to-slf4j", slf4jVersion)
+    compileOnly("jakarta.inject:jakarta.inject-api:1.0")
 
     // Use JUnit Jupiter API for testing.
     testImplementation(platform("org.junit:junit-bom:${junitVersion}"))

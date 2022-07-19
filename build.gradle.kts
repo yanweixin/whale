@@ -21,6 +21,8 @@ extra.apply {
     set("kafkaVersion", "3.1.0")
     set("curatorVersion", "5.2.0")
     set("hibernateValidatorVersion", "7.0.4.Final")
+    set("log4jVersion", "2.18.0")
+    set("slf4jVersion", "1.7.36")
 }
 
 allprojects {
