@@ -1,4 +1,4 @@
-package me.whale.data.api.validator;
+package me.whale.data.api.validator.annotation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.TYPE, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = UserLoginValidator.class)
+@Constraint(validatedBy = me.whale.data.api.validator.impl.UserLoginValidator.class)
 @Documented
 public @interface ValidUserLogin {
     String message() default "{me.whale.validator.ValidUserLogin.message}";

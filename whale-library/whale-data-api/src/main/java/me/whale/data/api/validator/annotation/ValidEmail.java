@@ -1,4 +1,4 @@
-package me.whale.data.api.validator;
+package me.whale.data.api.validator.annotation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -13,7 +13,7 @@ import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Documented
-@Constraint(validatedBy = EmailValidator.class)
+@Constraint(validatedBy = me.whale.data.api.validator.impl.EmailValidator.class)
 @Target({METHOD, FIELD, PARAMETER})
 @Retention(RUNTIME)
 public @interface ValidEmail {

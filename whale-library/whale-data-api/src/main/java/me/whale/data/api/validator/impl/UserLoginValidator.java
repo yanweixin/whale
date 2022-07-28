@@ -1,8 +1,9 @@
-package me.whale.data.api.validator;
+package me.whale.data.api.validator.impl;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import me.whale.data.api.model.UserLogin;
+import me.whale.data.api.validator.annotation.ValidUserLogin;
 import org.apache.commons.lang3.StringUtils;
 
 public class UserLoginValidator implements ConstraintValidator<ValidUserLogin, UserLogin> {

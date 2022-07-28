@@ -2,9 +2,9 @@ package me.whale.data.api.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import me.whale.data.api.validator.ValidEmail;
-import me.whale.data.api.validator.ValidPhone;
-import me.whale.data.api.validator.ValidUserLogin;
+import me.whale.data.api.validator.annotation.ValidEmail;
+import me.whale.data.api.validator.annotation.ValidPhone;
+import me.whale.data.api.validator.annotation.ValidUserLogin;
 
 import java.io.Serial;
 import java.io.Serializable;
