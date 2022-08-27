@@ -9,5 +9,6 @@ dependencies {
     api("me.whale:pure-utils:0.0.2-SNAPSHOT")
     api("me.whale:common-utils:0.0.1-SNAPSHOT")
     api("org.hibernate.validator:hibernate-validator:${hibernateValidatorVersion}")
-    implementation("jakarta.persistence:jakarta.persistence-api:3.0.0")
+    implementation("jakarta.persistence", "jakarta.persistence-api", "3.1.0")
+    testImplementation("org.eclipse.persistence", "eclipselink", "3.0.3") // for jpa test
 }

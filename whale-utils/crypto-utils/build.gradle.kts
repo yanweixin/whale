@@ -3,7 +3,7 @@ plugins {
 }
 
 val commonsCodecVersion by extra("1.15")
-val jwtVersion by extra("0.11.2")
+val jwtVersion by extra("0.11.5")
 
 dependencies {
     implementation("commons-codec:commons-codec:${commonsCodecVersion}")

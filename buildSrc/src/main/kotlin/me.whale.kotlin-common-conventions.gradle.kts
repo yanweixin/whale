@@ -48,9 +48,9 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
 
-    implementation("org.apache.logging.log4j", "log4j-slf4j-impl", log4jVersion)
-    implementation("org.apache.logging.log4j", "log4j-core", log4jVersion)
-    implementation("org.apache.logging.log4j", "log4j-jul", log4jVersion)
+    runtimeOnly("org.apache.logging.log4j", "log4j-slf4j-impl", log4jVersion)
+    runtimeOnly("org.apache.logging.log4j", "log4j-core", log4jVersion)
+    runtimeOnly("org.apache.logging.log4j", "log4j-jul", log4jVersion)
     implementation("org.slf4j", "jul-to-slf4j", slf4jVersion)
     compileOnly("jakarta.inject:jakarta.inject-api:1.0")
 

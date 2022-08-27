@@ -2,6 +2,8 @@ plugins {
     id("me.whale.kotlin-rpc-conventions")
 }
 
+val influxdbVersion by extra("6.4.0")
+
 dependencies {
-    implementation("com.influxdb:influxdb-client-java:3.2.0")
+    implementation("com.influxdb:influxdb-client-java:${influxdbVersion}")
 }
