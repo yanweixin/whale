@@ -1,12 +1,11 @@
-package me.whale.wrapper;
+package me.whale.wrapper.poi;
 
+import me.whale.wrapper.poi.PoiUtil;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PoiUtilTest {
 

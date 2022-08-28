@@ -1,6 +1,6 @@
-package me.whale.wrapper;
+package me.whale.wrapper.poi;
 
-import me.whale.wrapper.annotation.ExcelColumn;
+import me.whale.wrapper.poi.excel.ExcelColumn;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.SpreadsheetVersion;
@@ -72,8 +72,8 @@ public final class PoiUtil {
         retrieveColumnAndStyles(workbook, fields, sheetHeaders, patternCellStyleMap, cellStyles);
 
         SpreadsheetVersion spreadsheetVersion = workbook.getSpreadsheetVersion();
-        if (fields.size() > spreadsheetVersion.getMaxColumns()) {
-
+        if (fields.size() > spreadsheetVersion.getMaxColumns() || dataList.size() > spreadsheetVersion.getMaxRows()) {
+            throw new RuntimeException("exceeds excel limitation on max size of columns or rows");
         }
 
         Sheet sheet = workbook.createSheet(WorkbookUtil.createSafeSheetName(sheetName));
