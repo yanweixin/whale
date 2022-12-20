@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation("me.whale:whale-rpc-starter:0.0.1-SNAPSHOT")
+    implementation(project(":whale-library:whale-rpc-starter"))
     implementation("io.grpc:grpc-protobuf")
     implementation("io.grpc:grpc-stub")
     compileOnly("org.apache.tomcat:annotations-api:6.0.53") // necessary for Java 9+

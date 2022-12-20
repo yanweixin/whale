@@ -4,11 +4,11 @@ plugins {
 }
 
 dependencies {
-    implementation("me.whale:whale-data-api:0.0.1-SNAPSHOT")
+    implementation(project(":whale-library:whale-data-api"))
     implementation("me.whale:whale-rpc-proto:0.0.1-SNAPSHOT")
-    implementation("me.whale:pure-utils:0.0.2-SNAPSHOT")
-    implementation("me.whale:whale-cache:0.0.1-SNAPSHOT")
-    implementation("me.whale:whale-web-starter:0.0.1-SNAPSHOT")
+    implementation(project(":whale-utils:pure-utils"))
+    implementation(project(":whale-library:whale-cache"))
+    implementation(project(":whale-library:whale-web-starter"))
 }
 
 springBoot {

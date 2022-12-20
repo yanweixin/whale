@@ -11,9 +11,9 @@ repositories {
 }
 
 dependencies {
-    implementation("me.whale:pure-utils:0.0.2-SNAPSHOT")
-    implementation("me.whale:common-utils:0.0.1-SNAPSHOT")
-    implementation("me.whale:whale-log:0.0.1-SNAPSHOT")
+    implementation(project(":whale-utils:pure-utils"))
+    implementation(project(":whale-utils:common-utils"))
+    implementation(project(":whale-library:whale-log"))
     implementation("org.springframework.boot:spring-boot-autoconfigure")
     compileOnly("org.springframework:spring-web")
     compileOnly("org.hibernate.validator:hibernate-validator")

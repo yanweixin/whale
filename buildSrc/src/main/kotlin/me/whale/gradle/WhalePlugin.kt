@@ -1,6 +1,5 @@
 package me.whale.gradle
 
-import gradle.kotlin.dsl.accessors._04bf94890066869138e15fc86d43a456.implementationDependenciesMetadata
 import me.whale.gradle.extension.MessageExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project

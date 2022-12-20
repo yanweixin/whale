@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation("me.whale:pure-utils:0.0.2-SNAPSHOT")
+    implementation(project(":whale-utils:pure-utils"))
 }

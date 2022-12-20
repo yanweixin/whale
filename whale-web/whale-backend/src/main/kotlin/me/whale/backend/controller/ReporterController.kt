@@ -1,6 +1,6 @@
 package me.whale.backend.controller
 
-import me.whale.wrapper.PoiUtil
+import me.whale.wrapper.poi.PoiUtil
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController

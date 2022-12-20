@@ -17,7 +17,7 @@ dependencies {
 //    implementation("org.elasticsearch.client:elasticsearch-rest-client:${elasticVersion}")
     implementation("co.elastic.clients:elasticsearch-java:${elasticVersion}")
     implementation("com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}")
-    implementation("me.whale:whale-data-api:0.0.1-SNAPSHOT")
+    implementation(project(":whale-library:whale-data-api"))
 }
 
 tasks.shadowJar {
