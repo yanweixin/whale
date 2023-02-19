@@ -21,6 +21,7 @@ dependencies {
     implementation("io.vertx:vertx-web-client")
     implementation("io.vertx:vertx-web")
     implementation("io.vertx:vertx-lang-kotlin")
+    runtimeOnly("io.netty", "netty-resolver-dns-native-macos", null, null, "osx-x86_64")
     testImplementation("io.vertx:vertx-junit5")
 }
 

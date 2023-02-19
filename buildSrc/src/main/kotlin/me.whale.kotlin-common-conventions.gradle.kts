@@ -6,6 +6,7 @@ plugins {
     kotlin("jvm")
     id("me.champeau.jmh")
     id("com.github.johnrengelman.shadow")
+    id("io.spring.dependency-management")
 }
 apply<me.whale.gradle.WhalePlugin>()
 
@@ -24,43 +25,37 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 java.targetCompatibility = JavaVersion.VERSION_17
 
-val junitVersion: String by rootProject.extra
-val assertjVersion: String by rootProject.extra
 val jmhVersion: String by rootProject.extra
-val springVersion: String by rootProject.extra
-val log4jVersion: String by rootProject.extra
-val slf4jVersion: String by rootProject.extra
+val jacksonVersion: String by rootProject.extra
 
 dependencies {
     constraints {
         // Define dependency versions as constraints
         implementation("org.apache.commons:commons-text:${rootProject.extra["commonTextVersion"]}")
-        implementation("org.apache.commons:commons-math:3.6.1")
-        implementation("org.apache.commons:commons-lang3:${rootProject.extra["commonsLangVersion"]}")
+        implementation("org.apache.commons:commons-math:${rootProject.extra["commonsMathVersion"]}")
         implementation("commons-io:commons-io:${rootProject.extra["commonIoVersion"]}")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-        implementation("com.fasterxml.jackson.core:jackson-databind:${rootProject.extra["jacksonVersion"]}")
     }
 
+    implementation(platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES))
     // Align versions of all Kotlin components
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     // Use the Kotlin JDK 8 standard library.
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
 
-    runtimeOnly("org.apache.logging.log4j", "log4j-slf4j-impl", log4jVersion)
-    runtimeOnly("org.apache.logging.log4j", "log4j-core", log4jVersion)
-    runtimeOnly("org.apache.logging.log4j", "log4j-jul", log4jVersion)
-    implementation("org.slf4j", "jul-to-slf4j", slf4jVersion)
+    implementation("org.slf4j", "slf4j-api")
+    runtimeOnly("org.springframework.boot", "spring-boot-starter-log4j2")
     compileOnly("jakarta.inject:jakarta.inject-api:1.0")
 
     // Use JUnit Jupiter API for testing.
-    testImplementation(platform("org.junit:junit-bom:${junitVersion}"))
+    testImplementation(platform("org.junit:junit-bom"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation(kotlin("test"))
-    testImplementation("org.assertj:assertj-core:${assertjVersion}")
+    testImplementation("org.assertj:assertj-core")
+    testImplementation("org.mockito:mockito-core")
     // Use JUnit Jupiter Engine for testing.
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
     jmh("org.openjdk.jmh:jmh-core:${jmhVersion}")
     jmh("org.openjdk.jmh:jmh-generator-annprocess:${jmhVersion}")

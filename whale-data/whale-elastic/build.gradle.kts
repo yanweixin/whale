@@ -10,13 +10,11 @@ repositories {
     }
 }
 
-val elasticVersion: String by rootProject.extra
-val jacksonVersion: String by rootProject.extra
 
 dependencies {
 //    implementation("org.elasticsearch.client:elasticsearch-rest-client:${elasticVersion}")
-    implementation("co.elastic.clients:elasticsearch-java:${elasticVersion}")
-    implementation("com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}")
+    implementation("co.elastic.clients:elasticsearch-java")
+    implementation("com.fasterxml.jackson.core:jackson-databind")
     implementation(project(":whale-library:whale-data-api"))
 }
 
