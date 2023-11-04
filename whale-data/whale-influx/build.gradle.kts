@@ -1,5 +1,5 @@
 plugins {
-    id("me.whale.kotlin-rpc-conventions")
+    id("me.whale.kotlin-common-conventions")
 }
 
 val influxdbVersion by extra("6.7.0")

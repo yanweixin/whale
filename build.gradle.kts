@@ -1,17 +1,17 @@
 extra.apply {
-    set("jmhVersion", "1.35")
-    set("vertxVersion", "4.3.8")
-    set("grpcVersion", "1.53.0")
-    set("protocVersion", "3.22.0")
-    set("grpcKotlinVersion", "1.3.0")
-    set("redissonVersion", "3.19.3")
-    set("poiVersion", "5.2.2")
-    set("easyexcelVersion", "3.2.1")
-    set("commonTextVersion", "1.9")
-    set("commonIoVersion", "2.11.0")
+    set("jmhVersion", "1.37")
+    set("vertxVersion", "4.4.6")
+    set("grpcVersion", "1.59.0")
+    set("protocVersion", "3.25.0")
+    set("grpcKotlinVersion", "1.4.0")
+    set("redissonVersion", "3.24.3")
+    set("poiVersion", "5.2.4")
+    set("easyexcelVersion", "3.3.2")
+    set("commonTextVersion", "1.11.0")
+    set("commonIoVersion", "2.15.0")
     set("commonsMathVersion","3.6.1")
     set("univocityVersion", "2.9.1")
-    set("curatorVersion", "5.3.0")
+    set("curatorVersion", "5.5.0")
 }
 
 allprojects {

@@ -13,7 +13,7 @@ dependencies {
     implementation("com.google.protobuf:protobuf-kotlin")
     implementation("io.grpc:grpc-kotlin-stub")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
-    compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4")
+    compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3")
 //    compileOnly("org.apache.tomcat:annotations-api:6.0.53") // necessary for Java 9+
 }
 
